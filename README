@@ -1,0 +1,4 @@
+ simplecalc.py is a PLY ( Python-Lex-Yacc) implementation of Yacc Calculator
+USAGE: python simplecalc.py
+then type in the expression with quotation marks around it.
+e.g. "1 + 2*3!"
