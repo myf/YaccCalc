@@ -3,12 +3,14 @@ from ply import lex, yacc
 exp = raw_input("calculate ")
 ###########################
 ###lexer
-tokens=('NUMBER','PLUS','MINUS','TIMES','DIVIDE', 'FACTORIAL')
+tokens=('NUMBER','PLUS','MINUS','TIMES','DIVIDE', 'FACTORIAL','LPAREN','RPAREN',)
 t_PLUS = r'\+'
 t_MINUS = r'\-'
 t_TIMES = r'\*'
 t_DIVIDE = r'\/'
 t_FACTORIAL = r'\!'
+t_LPAREN = r'\('
+t_RPAREN = r'\)'
 #ignore
 t_ignore = ' '
 #number returns value
@@ -60,6 +62,12 @@ def p_expression(p):
         if p[2] == "!":
             p[0] = factorial(p[1])
             print p[0]
+
+def p_expression_group(p):
+    """
+    expression : LPAREN expression RPAREN
+    """
+    p[0]=p[2]
 
 def factorial(n):
     result = 1
